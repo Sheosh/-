@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 5 IT271: JavaScript Program Examples</title>
+  <style>
+    section {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: darkblue;
+    }
+  </style>
+  <script>
+    // 1. Change paragraph content from "HTML" to "Javascript"
+    function changeContent() {
+      document.getElementById("contentParagraph").innerHTML = "Javascript";
+    }
+
+    // 2. Change style of the paragraph "Javascript" to size 14 and color blue
+    function changeStyle() {
+      var paragraph = document.getElementById("styleParagraph");
+      paragraph.style.fontSize = "14px";
+      paragraph.style.color = "blue";
+    }
+
+    // 3. Random integer guessing game
+    function playGame() {
+      var randomNumber = Math.floor(Math.random() * 10) + 1;
+      var userGuess = parseInt(prompt("Guess a number between 1 and 10:"));
+      if (userGuess === randomNumber) {
+        alert("Good Work");
+      } else {
+        alert("Not matched. The correct number was " + randomNumber);
+      }
+    }
+
+    // 4. Temperature converter (Celsius <-> Fahrenheit)
+    function cToF() {
+      var celsius = parseFloat(document.getElementById("celsius").value);
+      var fahrenheit = (celsius * 9/5) + 32;
+      document.getElementById("tempResult").textContent = celsius + "°C is " + fahrenheit + "°F";
+    }
+    function fToC() {
+      var fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+      var celsius = (fahrenheit - 32) * 5/9;
+      document.getElementById("tempResult").textContent = fahrenheit + "°F is " + celsius + "°C";
+    }
+
+    // 5. Angle type checker
+    function checkAngle() {
+      let angle = parseFloat(document.getElementById("angleInput").value);
+      let result;
+      if (angle > 0 && angle < 90) {
+        result = "Acute angle (between 0° and 90°).";
+      } else if (angle === 90) {
+        result = "Right angle (exactly 90°).";
+      } else if (angle > 90 && angle < 180) {
+        result = "Obtuse angle (between 90° and 180°).";
+      } else if (angle === 180) {
+        result = "Straight angle (exactly 180°).";
+      } else {
+        result = "Not a valid angle in the specified range.";
+      }
+      document.getElementById("angleResult").textContent = result;
+    }
+
+    // 6. Reverse bits of an integer
+    function reverseBits() {
+      let input = parseInt(document.getElementById("inputInteger").value);
+      let binaryString = input.toString(2);
+      let reversedBinary = binaryString.split('').reverse().join('');
+      let reversedInteger = parseInt(reversedBinary, 2);
+      document.getElementById("originalBinary").textContent = input + " -> " + binaryString;
+      document.getElementById("reversedBinary").textContent = "After reverse: " + reversedInteger + " -> " + reversedBinary;
+    }
+
+    // 7. Compute the sum of cubes from 1 to a given integer
+    function computeSumOfCubes() {
+      let n = parseInt(document.getElementById("numberInput").value);
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i * i * i;
+      }
+      document.getElementById("sumResult").textContent = "The sum of cubes from 1 to " + n + " is: " + sum;
+    }
+  </script>
+</head>
+<body>
+  <h1>Lab 5 IT271: JavaScript Program Examples</h1>
+
+  <!-- Section 1: Change Paragraph Content -->
+  <section>
+    <h2>1. Change Paragraph Content</h2>
+    <p id="contentParagraph">HTML</p>
+    <button onclick="changeContent()">Change Content</button>
+  </section>
+
+  <!-- Section 2: Change Paragraph Style -->
+  <section>
+    <h2>2. Change Paragraph Style</h2>
+    <p id="styleParagraph">Javascript</p>
+    <button onclick="changeStyle()">Change Style</button>
+  </section>
+
+  <!-- Section 3: Random Integer Guessing Game -->
+  <section>
+    <h2>3. Random Integer Guessing Game</h2>
+    <button onclick="playGame()">Play Game</button>
+  </section>
+
+  <!-- Section 4: Temperature Converter -->
+  <section>
+    <h2>4. Temperature Converter (Celsius &lt;=&gt; Fahrenheit)</h2>
+    <div>
+      <label>Enter Temperature in Celsius: </label>
+      <input type="text" id="celsius" placeholder="Celsius">
+      <button onclick="cToF()">Convert to Fahrenheit</button>
+    </div>
+    <br>
+    <div>
+      <label>Enter Temperature in Fahrenheit: </label>
+      <input type="text" id="fahrenheit" placeholder="Fahrenheit">
+      <button onclick="fToC()">Convert to Celsius</button>
+    </div>
+    <p id="tempResult"></p>
+  </section>
+
+  <!-- Section 5: Angle Type Checker -->
+  <section>
+    <h2>5. Angle Type Checker</h2>
+    <form>
+      <label for="angleInput">Enter an angle in degrees:</label>
+      <input type="text" id="angleInput" name="angleInput">
+      <button type="button" onclick="checkAngle()">Check Angle</button>
+    </form>
+    <p id="angleResult"></p>
+  </section>
+
+  <!-- Section 6: Reverse Bits of an Integer -->
+  <section>
+    <h2>6. Reverse Bits of an Integer</h2>
+    <p>
+      Enter an integer: 
+      <input type="text" id="inputInteger" placeholder="Enter an integer">
+      <button onclick="reverseBits()">Reverse Bits</button>
+    </p>
+    <p id="originalBinary"></p>
+    <p id="reversedBinary"></p>
+  </section>
+
+  <!-- Section 7: Sum of Cubes Calculator -->
+  <section>
+    <h2>7. Sum of Cubes Calculator</h2>
+    <form>
+      <label for="numberInput">Enter an integer:</label>
+      <input type="text" id="numberInput" placeholder="Enter an integer">
+      <button type="button" onclick="computeSumOfCubes()">Calculate Sum of Cubes</button>
+    </form>
+    <p id="sumResult"></p>
+  </section>
+</body>
+</html>
 
